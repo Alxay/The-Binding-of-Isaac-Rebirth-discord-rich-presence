@@ -10,5 +10,7 @@ start_time = int(time.time())
 
 while True:
     game_data = dataManager.getGameData()
-    discordManager.updatePresence(game_data)
-    time.sleep(5)
+    if game_data != discordManager.game_data:
+        print("Powiadamiam discord")
+        discordManager.updatePresence(game_data)
+    time.sleep(2)
