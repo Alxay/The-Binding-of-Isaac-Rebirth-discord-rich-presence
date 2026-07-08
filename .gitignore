@@ -1,1 +1,7 @@
 __pycache__
+build
+dist
+main.exe
+main.spec
+launcher.spec
+launcher
