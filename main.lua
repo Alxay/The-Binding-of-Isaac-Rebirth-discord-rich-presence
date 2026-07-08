@@ -13,7 +13,6 @@ function DRPMod:OnUpdate()
         local level = game:GetLevel()
         
         if player and game then
-
             -- 0. GRACZ
             local damage = player.Damage
             local moveSpeed = player.MoveSpeed
@@ -30,8 +29,8 @@ function DRPMod:OnUpdate()
             local floorName = level:GetName()
             local currentRoom = room:GetType()
             local bossId = room:GetBossID()
-            local seedRaw = game:GetSeeds():GetStartSeed()
-            local seedString = tostring(seedRaw)
+            local seedString = game:GetSeeds():GetStartSeedString()
+        
             
             -- 3. POZIOM TRUDNOŚCI
             local diffString = "Normal"
@@ -67,14 +66,18 @@ function DRPMod:OnUpdate()
                 player_name = playerName,
                 boss_id = bossId,
                 current_room = currentRoom,
-                floor_name = floorName
+                floor_name = floorName,
+                game_state = 1
             }
             
             -- 6. WYSYŁKA
             local jsonText = json.encode(dataToSave)
             DRPMod:SaveData(jsonText)
         end
-    end
+    end 
 end
 
 DRPMod:AddCallback(ModCallbacks.MC_POST_UPDATE, DRPMod.OnUpdate)
+DRPMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, function(_, shouldSave)
+    DRPMod:SaveData(json.encode({game_state = 0}))
+end)
