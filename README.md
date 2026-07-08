@@ -1,77 +1,67 @@
 # Discord Rich Presence for The Binding of Isaac: Rebirth
 
-A mod that displays rich presence information in Discord while playing The Binding of Isaac: Rebirth.
+Show your current Isaac run directly in Discord Rich Presence.
 
-## Features
+## What This Mod Shows
 
-- **Live Game Status**: Display current floor, room type, and difficulty in your Discord status
-- **Player Stats**: Show player damage, move speed, and health in real-time
-- **Resources Tracking**: Display coins, bombs, and keys
-- **Seed Information**: Share the current run's seed (Not shown by default)
-- **Boss Detection**: Show when you're facing a boss (Not shown by default)
-- **Difficulty Indication**: Display difficulty level (Normal, Hard, Greed, Greedier)
+- Current floor and room type
+- Difficulty (Normal, Hard, Greed, Greedier)
+- Player stats (damage, move speed, health)
+- Resources (coins, bombs, keys)
+- Optional: seed and boss status
 
-## Project Structure
+## Download
 
-- **main.lua** - Lua mod that collects game data from Isaac
-- **main.py** - Python script that manages Discord integration and updates presence
-- **dataManager.py** - Handles game data collection and formatting
-- **discordManager.py** - Manages Discord API communication
-- **metadata.xml** - Mod metadata for Isaac mod loader
+Download the release ZIP from:
+
+https://github.com/Alxay/discordrichpresence/releases/tag/0.0.1
+
+## Installation (Windows)
+
+1. Download the ZIP from the release page above.
+2. Extract the ZIP to:
+
+   `C:\Program Files (x86)\Steam\steamapps\common\The Binding of Isaac Rebirth\mods`
+
+3. If your Steam library is on another drive, replace the drive letter in path (for example `C:` -> `D:`).
+
+## Steam Launch Options (Required)
+
+In Steam, open:
+
+`The Binding of Isaac: Rebirth -> Properties -> Launch Options`
+
+Paste this value:
+
+`"C:\Program Files (x86)\Steam\steamapps\common\The Binding of Isaac Rebirth\mods\discordrichpresence\launcher\launcher.exe" %command%`
+
+Important:
+
+- Keep the quotes around the full path.
+- Keep `%command%` exactly as shown.
+- If your game is installed on a different drive, change the drive letter (for example `C:` -> `D:`).
 
 ## Requirements
 
 - The Binding of Isaac: Rebirth
-- Python 3.x
-- pypresence library (`pip install pypresence`)
-- Lua 5.3+
-
-## Installation
-
-1. Clone or download this mod into your Isaac mods directory:
-   - Windows: `C:\Program Files (x86)\Steam\steamapps\common\The Binding of Isaac Rebirth\mods\`
-
-2. Install Python dependencies:
-   ```bash
-   pip install pypresence
-   ```
-
-3. Start Isaac - the mod will automatically load
-
-4. Run the Python script to sync with Discord:
-   ```bash
-   python main.py
-   ```
+- Discord desktop app running
+- Windows
 
 ## How It Works
 
-1. The Lua mod (`main.lua`) hooks into Isaac's game loop and collects player/room/difficulty data every 30 frames
-2. The Python script (`main.py`) reads this data and updates your Discord Rich Presence status
-3. Discord displays the information in your profile and to your friends
+1. The Lua part of the mod collects run data in-game.
+2. The launcher starts the Python integration.
+3. Discord Rich Presence is updated while you play.
 
-## Configuration
+## Troubleshooting
 
-The Discord Application ID is configured in `main.py`:
-```python
-client_id = "358420454764969994"
-```
-
-## Build and Test
-
-Run tests using Maven:
-```bash
-mvn test
-```
-
-Verify the build:
-```bash
-mvn verify
-```
+- No Rich Presence visible:
+  - Make sure Discord is running.
+  - Re-check Steam Launch Options and path spelling.
+  - Confirm you changed the drive letter if needed.
+- Mod not loading:
+  - Verify the extracted folder is inside the `mods` directory.
 
 ## Version
 
-Current version: 0.0.1
-
-## License
-
-Public mod for The Binding of Isaac: Rebirth community
+Current version: `0.0.1`
