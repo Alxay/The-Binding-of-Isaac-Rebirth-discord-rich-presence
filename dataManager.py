@@ -9,9 +9,13 @@ class dataManager:
         drive = exe_path.drive
         save_path = os.path.join(f"{drive}\\Program Files (x86)\\Steam\\steamapps\\common\\The Binding of Isaac Rebirth\\data\\discordrichpresence", f"save{saveId}.dat")
         if os.path.exists(save_path):
-            with open(save_path, "r", encoding="utf-8") as save_file:
-                game_data = json.load(save_file)
-            print(game_data)
+            try:
+                with open(save_path, "r", encoding="utf-8") as save_file:
+                    game_data = json.load(save_file)
+                print(game_data)
+            except json.JSONDecodeError:
+                game_data = None
+                print(f"Nieprawidlowy lub pusty JSON w pliku: {save_path}")
         else:
             game_data = None
             print(f"Nie znaleziono pliku: {save_path}")
