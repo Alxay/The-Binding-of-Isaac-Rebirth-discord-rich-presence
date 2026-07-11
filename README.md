@@ -63,4 +63,4 @@ Important:
 
 ## Version
 
-Current version: `0.0.1`
+Current version: `0.0.2`
