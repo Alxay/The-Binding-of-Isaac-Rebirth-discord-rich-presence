@@ -81,9 +81,9 @@ class discordManager:
             #state = f"Coin: {coins}🪙 | Bomb: {bombs}💣 | Key: {keys}🔑",
             #state = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} | {difficulty}", 
             #https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/blob/main/Images/Characters/playerportrait_apollyon.png
-            large_image = "https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/blob/main/Images/Rooms/Cellar_I_1.png",
+            large_image = "https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Cellar_I_1.png",
             large_text = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} ",
-            small_image = f"https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/blob/main/Images/Characters/playerportrait_{player_name.lower()}.png",
+            small_image = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Characters/{player_name}.png",
             small_text = f"{player_name}",
             #party_size = [2, 4],
             #name = "test",
