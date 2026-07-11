@@ -9,6 +9,12 @@ class discordManager:
         self.game_data = None
         self.RPC = Presence(self.client_id)
         self.RPC.connect()
+        self.changes = {
+            "???": "Blue_Baby",
+            "The Lost": "The_Lost",
+            "The Forgotten": "The_Forgotten",
+            "Jacob and Esau": "Jacob_and_Esau",
+        }
         self.rooms = {
             0:  "Null Room",
             1:  "Default Room",
@@ -83,8 +89,8 @@ class discordManager:
             #https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/blob/main/Images/Characters/playerportrait_apollyon.png
             large_image = "https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Cellar_I_1.png",
             large_text = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} ",
-            small_image = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Characters/{player_name}.png",
-            small_text = f"{player_name}",
+            small_image = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Characters/{self.changes.get(player_name, player_name)}.png",
+            small_text = f"{self.changes.get(player_name, player_name)}",
             #party_size = [2, 4],
             #name = "test",
         )
