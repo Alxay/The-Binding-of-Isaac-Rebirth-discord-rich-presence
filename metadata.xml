@@ -2,7 +2,7 @@
 	<name>Rich Presence For Discord</name>
 	<directory>discordrichpresence</directory>
 	<description>A mod that displays rich presence information from The Binding of Isaac in Discord</description>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<visibility>public</visibility>
 </metadata>
 
