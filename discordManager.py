@@ -85,7 +85,7 @@ class discordManager:
 
         self.RPC.update(
             activity_type=ActivityType.PLAYING,
-            details = f"{hearts}❤️ |  {round(damage,2)}🗡️ | {round(shotSpeed,2)}💧",
+            details = f"{hearts}❤️ |  {round(damage,2)}🗡️ | {round(shotSpeed,2)}💦",
             state = f"Coins: {coins} | Bombs: {bombs} | Keys: {keys}",
             #state = f"Coin: {coins}🪙 | Bomb: {bombs}💣 | Key: {keys}🔑",
             #state = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} | {difficulty}", 
