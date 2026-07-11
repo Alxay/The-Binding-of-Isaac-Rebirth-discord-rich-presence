@@ -73,16 +73,19 @@ class discordManager:
         char_key = self.game_data.get("char_key", "default_character")
         floor_key = self.game_data.get("floor_key", "default_floor")
         damage = self.game_data.get("damage", 0)
-        move_speed = self.game_data.get("move_speed", 0)
+        #move_speed = self.game_data.get("move_speed", 0)
+        shotSpeed = self.game_data.get("shotSpeed", 0)
         hearts = self.game_data.get("hearts", 0)
         player_name = self.game_data.get("player_name", "Unknown")
         boss_id = self.game_data.get("boss_id", "Unknown")
         current_room = self.game_data.get("current_room", "Unknown")
         floor_name = self.game_data.get("floor_name", "Unknown")
 
+        #print(f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Characters/{self.changes.get(player_name, player_name)}.png")
+
         self.RPC.update(
             activity_type=ActivityType.PLAYING,
-            details = f"{hearts}❤️ |  {round(damage,2)}🗡️ | {round(move_speed,2)}👟",
+            details = f"{hearts}❤️ |  {round(damage,2)}🗡️ | {round(shotSpeed,2)}💧",
             state = f"Coins: {coins} | Bombs: {bombs} | Keys: {keys}",
             #state = f"Coin: {coins}🪙 | Bomb: {bombs}💣 | Key: {keys}🔑",
             #state = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} | {difficulty}", 
@@ -90,10 +93,10 @@ class discordManager:
             large_image = "https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Cellar_I_1.png",
             large_text = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} ",
             small_image = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Characters/{self.changes.get(player_name, player_name)}.png",
-            small_text = f"{self.changes.get(player_name, player_name)}",
+            small_text = f"{player_name}",
             #party_size = [2, 4],
             #name = "test",
-        )
+        )   
     def updatePresenceMenu(self):
         self.RPC.update(
             activity_type=ActivityType.PLAYING,

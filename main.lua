@@ -15,7 +15,8 @@ function DRPMod:OnUpdate()
         if player and game then
             -- 0. GRACZ
             local damage = player.Damage
-            local moveSpeed = player.MoveSpeed
+            --local moveSpeed = player.MoveSpeed
+            local shotSpeed = player.ShotSpeed
             --                   red + bone             soul + black                  rotten                                 eternal
             local heartsAmount = (player:GetHearts() + player:GetSoulHearts() + player:GetRottenHearts() + player:GetEternalHearts()) * 0.5
             local playerName = player:GetName()
@@ -61,7 +62,7 @@ function DRPMod:OnUpdate()
                 --char_key = charImageKey,
                 --floor_key = floorImageKey,
                 damage = damage,
-                move_speed = moveSpeed,
+                shotSpeed = shotSpeed,
                 hearts = heartsAmount,
                 player_name = playerName,
                 boss_id = bossId,
