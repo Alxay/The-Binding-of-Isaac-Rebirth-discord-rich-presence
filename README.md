@@ -14,10 +14,8 @@ Show your current Isaac run directly in Discord Rich Presence.
 
 [![Download Latest Release](https://img.shields.io/badge/⬇️_Download-Latest_Release-2ea44f?style=for-the-badge&logo=github)](https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/releases/latest)
 
-![Latest Release](https://img.shields.io/github/v/release/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence?style=for-the-badge&logo=github)
-![Downloads](https://img.shields.io/github/downloads/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/total?style=for-the-badge&logo=github)
+*Click the button above to download the latest **.zip** release.*
 
-> Download the **`.zip`** file from the latest release.
 ## Installation (Windows)
 
 1. Download the ZIP from the release page above.
