@@ -109,7 +109,7 @@ class discordManager:
         )
 
     def getFloorImage(self, floor_name):
-        url_floor_name = floor_name.replace("I","").replace("II","").replace("III","").replace("IV","").replace("V","").replace("VI","").replace("VII","").replace("VIII","").replace("IX","").replace("X","").replace(" ", "_").replace(" ","").rstrip("_")
+        url_floor_name = floor_name.replace("I","").replace("II","").replace("III","").replace("IV","").replace("V","").replace("VI","").replace("VII","").replace("VIII","").replace("IX","").replace("X","").replace(" ", "_").replace(" ","").rstrip("_").replace("???","Blue_Womb")
         floor_image_url = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Default/{url_floor_name}.png"
         return floor_image_url
 
