@@ -90,7 +90,8 @@ class discordManager:
             #state = f"Coin: {coins}🪙 | Bomb: {bombs}💣 | Key: {keys}🔑",
             #state = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} | {difficulty}", 
             #https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/blob/main/Images/Characters/playerportrait_apollyon.png
-            large_image = "https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Cellar_I_1.png",
+            #large_image = "https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Default/Basement.png",
+            large_image = self.getFloorImage(floor_name),
             large_text = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} ",
             small_image = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Characters/{self.changes.get(player_name, player_name)}.png",
             small_text = f"{player_name}",
@@ -104,6 +105,11 @@ class discordManager:
             state = "Navigating menus",
     
         )
+
+    def getFloorImage(floor_name):
+        url_floor_name = floor_name.replace(" ", "_").replace("I","").replace("II","").replace("III","").replace("IV","").replace("V","").replace("VI","").replace("VII","").replace("VIII","").replace("IX","").replace("X","")
+        floor_image_url = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Default/{url_floor_name}.png"
+        return floor_image_url
 
     def updatePresencePause(self):
         self.RPC.update(

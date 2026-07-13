@@ -14,7 +14,6 @@ Show your current Isaac run directly in Discord Rich Presence.
 
 [![Latest Release](https://img.shields.io/github/v/release/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence?style=for-the-badge&logo=github)](https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/releases/latest)
 
-
 ## Installation (Windows)
 
 1. Download the ZIP from the release page above.
@@ -45,6 +44,10 @@ Important:
 - The Binding of Isaac: Rebirth
 - Discord desktop app running
 - Windows
+
+## Asset Note
+
+This repository includes images and other game-related assets from The Binding of Isaac: Rebirth and its related materials. Those assets are owned by Nicalis Inc. and/or Edmund McMillen.
 
 ## How It Works
 
