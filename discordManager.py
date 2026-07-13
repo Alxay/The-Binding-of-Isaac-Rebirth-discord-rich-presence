@@ -80,6 +80,8 @@ class discordManager:
         boss_id = self.game_data.get("boss_id", "Unknown")
         current_room = self.game_data.get("current_room", "Unknown")
         floor_name = self.game_data.get("floor_name", "Unknown")
+        large_image_url = self.getFloorImage(floor_name)
+        print(large_image_url)
 
         #print(f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Characters/{self.changes.get(player_name, player_name)}.png")
 
@@ -91,7 +93,7 @@ class discordManager:
             #state = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} | {difficulty}", 
             #https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/blob/main/Images/Characters/playerportrait_apollyon.png
             #large_image = "https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Default/Basement.png",
-            large_image = self.getFloorImage(floor_name),
+            large_image = large_image_url,
             large_text = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} ",
             small_image = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Characters/{self.changes.get(player_name, player_name)}.png",
             small_text = f"{player_name}",
@@ -106,8 +108,8 @@ class discordManager:
     
         )
 
-    def getFloorImage(floor_name):
-        url_floor_name = floor_name.replace(" ", "_").replace("I","").replace("II","").replace("III","").replace("IV","").replace("V","").replace("VI","").replace("VII","").replace("VIII","").replace("IX","").replace("X","")
+    def getFloorImage(self, floor_name):
+        url_floor_name = floor_name.replace("I","").replace("II","").replace("III","").replace("IV","").replace("V","").replace("VI","").replace("VII","").replace("VIII","").replace("IX","").replace("X","").replace(" ", "_").replace(" ","").rstrip("_")
         floor_image_url = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Rooms/Default/{url_floor_name}.png"
         return floor_image_url
 
