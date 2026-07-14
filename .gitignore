@@ -5,3 +5,5 @@ main.exe
 main.spec
 launcher.spec
 launcher
+disable.it
+installer.spec
