@@ -82,12 +82,14 @@ class discordManager:
         current_room = self.game_data.get("current_room", "Unknown")
         floor_name = self.game_data.get("floor_name", "Unknown")
         if boss_id != 0 and boss_id in self.bosses:
+            #https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Bosses/portrait_67.0_dukeofflies.png
+            #https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Bosses/BossName_67.0_DukeOfFlies.png
             large_image_url = self.getBossImage(boss_id)
             boss_name = self.bosses[boss_id]["name"]
             text_large = f"{boss_name} | {floor_name}"
         else:
             large_image_url = self.getFloorImage(floor_name)
-            text_large = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} ",
+            text_large = f"{floor_name} | {self.rooms.get(current_room, 'Unknown Room')} "
         #print("BOSS ID: {}".format(boss_id))
         print(large_image_url)
 
@@ -123,7 +125,7 @@ class discordManager:
     
     def getBossImage(self, boss_id):
         if boss_id in self.bosses:
-            image_name = self.bosses[boss_id]["nameimage"]
+            image_name = self.bosses[boss_id]["nameimage"].lower().replace("bossname","portrait")
             boss_image_url = f"https://raw.githubusercontent.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/refs/heads/main/Images/Bosses/{image_name}"
             return boss_image_url
         else:
