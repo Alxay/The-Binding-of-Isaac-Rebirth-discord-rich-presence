@@ -123,16 +123,83 @@ def _is_within_directory(directory: str, target: str) -> bool:
 
 def safe_extract(zip_bytes: bytes, destination: str) -> None:
     """Extract a zip archive, rejecting any entry that would escape `destination`
-    (a "zip slip" path-traversal guard)."""
+    (a "zip slip" path-traversal guard), while renaming the top-level folder to 'discordrichpresence'."""
+    import shutil
+
+    target_mod_folder_name = "discordrichpresence"
+    target_mod_path = os.path.join(destination, target_mod_folder_name)
+
     with zipfile.ZipFile(io.BytesIO(zip_bytes)) as archive:
-        for member in archive.infolist():
+        members = archive.infolist()
+        if not members:
+            raise InstallError("The downloaded archive is empty.")
+
+        # Determine if there is a common root directory in the zip
+        common_root = None
+        first_member = members[0].filename.replace("\\", "/")
+        first_part = first_member.split("/")[0]
+        if first_part:
+            is_common = True
+            has_dir_indicator = False
+            for member in members:
+                norm_name = member.filename.replace("\\", "/")
+                if not (norm_name == first_part or norm_name.startswith(first_part + "/")):
+                    is_common = False
+                    break
+                if norm_name == first_part + "/" or norm_name.startswith(first_part + "/"):
+                    has_dir_indicator = True
+            if is_common and has_dir_indicator:
+                common_root = first_part
+
+        # Clean up the existing destination folder if it exists, to ensure a clean install/update
+        if os.path.exists(target_mod_path):
+            try:
+                def remove_readonly(func, path, _):
+                    import stat
+                    os.chmod(path, stat.S_IWRITE)
+                    func(path)
+                shutil.rmtree(target_mod_path, onerror=remove_readonly)
+            except OSError as exc:
+                raise InstallError(
+                    f"Failed to remove existing mod directory '{target_mod_path}': {exc}. "
+                    "Make sure the game and launcher are closed."
+                ) from exc
+
+        # Create target directory
+        os.makedirs(target_mod_path, exist_ok=True)
+
+        for member in members:
+            # We rewrite the filename to map it to target_mod_folder_name
+            norm_name = member.filename.replace("\\", "/")
+            parts = [p for p in norm_name.split("/") if p]
+            if not parts:
+                continue
+
+            if common_root:
+                # Replace the first component with target_mod_folder_name
+                parts[0] = target_mod_folder_name
+            else:
+                # Prepend target_mod_folder_name
+                parts.insert(0, target_mod_folder_name)
+
+            # Reconstruct the member filename
+            new_filename = "/".join(parts)
+            # If the original filename ended with a slash, preserve it
+            if member.filename.endswith("/") or member.filename.endswith("\\"):
+                new_filename += "/"
+
+            member.filename = new_filename
+
+            # Perform the path-traversal check on the new destination-based path
             member_path = os.path.join(destination, member.filename)
             if not _is_within_directory(destination, member_path):
                 raise InstallError(
                     "Archive contains a suspicious file path and has been rejected "
                     "(zip slip protection)."
                 )
-        archive.extractall(destination)
+
+            # Extract the member
+            archive.extract(member, destination)
 
 
 def find_file(root: str, filename: str) -> Optional[str]:

@@ -5,9 +5,14 @@ import sys
 import json
 class dataManager:
     def getGameData(self,saveId = 1):
-        exe_path = Path(sys.executable)
-        drive = exe_path.drive
-        save_path = os.path.join(f"{drive}\\Program Files (x86)\\Steam\\steamapps\\common\\The Binding of Isaac Rebirth\\data\\discordrichpresence", f"save{saveId}.dat")
+        if getattr(sys, 'frozen', False):
+            base = Path(sys.executable).resolve().parent.parent.parent #game folder
+        else:
+            base = Path(__file__).resolve().parent
+        # exe_path = Path(sys.executable)
+        # drive = exe_path.drive
+        save_path =  (base / "data" / "discordrichpresence" / f"save{saveId}.dat").resolve()
+        #os.path.join(f"{drive}\\Program Files (x86)\\Steam\\steamapps\\common\\The Binding of Isaac Rebirth\\data\\discordrichpresence", f"save{saveId}.dat")
         if os.path.exists(save_path):
             try:
                 with open(save_path, "r", encoding="utf-8") as save_file:
