@@ -7,6 +7,7 @@ class discordManager:
     def __init__(self):
         self.client_id = "358420454764969994"
         self.game_data = None
+        self.start_time = None
         self.RPC = Presence(self.client_id)
         self.RPC.connect()
         self.changes = {
@@ -54,6 +55,7 @@ class discordManager:
         self.game_data = game_data
         if game_data is None:
             self.RPC.clear()
+            self.start_time = None
             return
         
         if game_data.get("game_state") == 0:
@@ -66,6 +68,9 @@ class discordManager:
         self.updatePresencePlaying()
 
     def updatePresencePlaying(self):
+        # set start timestamp when gameplay begins
+        if self.start_time is None:
+            self.start_time = int(time.time())
         coins = self.game_data.get("coins", 0)
         bombs = self.game_data.get("bombs", 0)
         keys = self.game_data.get("keys", 0)
@@ -97,6 +102,7 @@ class discordManager:
 
         self.RPC.update(
             activity_type=ActivityType.PLAYING,
+            start=self.start_time,
             details = f"{hearts}❤️ |  {round(damage,2)}🗡️ | {round(shotSpeed,2)}💦",
             state = f"Coins: {coins} | Bombs: {bombs} | Keys: {keys}",
             #state = f"Coin: {coins}🪙 | Bomb: {bombs}💣 | Key: {keys}🔑",
@@ -111,11 +117,12 @@ class discordManager:
             #name = "test",
         )   
     def updatePresenceMenu(self):
+        # clear start time when in menu
+        self.start_time = None
         self.RPC.update(
             activity_type=ActivityType.PLAYING,
             details = "In Menu",
             state = "Navigating menus",
-    
         )
 
     def getFloorImage(self, floor_name):
@@ -132,8 +139,17 @@ class discordManager:
             return None
 
     def updatePresencePause(self):
-        self.RPC.update(
-            activity_type=ActivityType.PLAYING,
-            state = "Paused",
-            details = "Game is paused",
-        )
+        # include start timestamp when available so Discord shows elapsed time
+        if self.start_time is not None:
+            self.RPC.update(
+                activity_type=ActivityType.PLAYING,
+                state = "Paused",
+                details = "Game is paused",
+                start=self.start_time,
+            )
+        else:
+            self.RPC.update(
+                activity_type=ActivityType.PLAYING,
+                state = "Paused",
+                details = "Game is paused",
+            )
