@@ -66,4 +66,4 @@ This repository includes images and other game-related assets from The Binding o
 
 ## Version
 
-Current version: `0.0.3`
+Current version: `0.0.4`
