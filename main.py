@@ -9,7 +9,7 @@ discordManager = discordManager()
 client_id = "358420454764969994" 
 start_time = int(time.time())
 
-i = 10
+i = 30
 while i > 0:
     running = any(p.name().lower() == "isaac-ng.exe" for p in psutil.process_iter(["name"]))
     i -= 1
