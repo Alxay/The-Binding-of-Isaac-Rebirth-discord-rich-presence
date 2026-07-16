@@ -44,9 +44,8 @@ Important:
 - Keep `%command%` exactly as shown.
 - If your game is installed on a different drive, change the drive letter (for example `C:` -> `D:`).
 
-## 🐧 Linux Installation
-For Linux installation instructions, see the `linux` branch:
-https://github.com/Alxay/the-binding-of-isaac-rebirth-discord-rich-presence/tree/linux
+## 🐧 Linux
+See the installation guide on the [`linux`](https://github.com/Alxay/the-binding-of-isaac-rebirth-discord-rich-presence/tree/linux) branch.
 
 ## Requirements
 - The Binding of Isaac: Rebirth
