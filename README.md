@@ -44,13 +44,12 @@ Important:
 - Keep `%command%` exactly as shown.
 - If your game is installed on a different drive, change the drive letter (for example `C:` -> `D:`).
 
-## 🐧 Linux
-See the installation guide on the [`linux`](https://github.com/Alxay/the-binding-of-isaac-rebirth-discord-rich-presence/tree/linux) branch.
-
 ## Requirements
 - The Binding of Isaac: Rebirth
 - Discord desktop app running
 
+## 🐧 Linux
+See the installation guide on the [`linux`](https://github.com/Alxay/the-binding-of-isaac-rebirth-discord-rich-presence/tree/linux) branch.
 ## Asset Note
 
 This repository includes images and other game-related assets from The Binding of Isaac: Rebirth and its related materials. Those assets are owned by Nicalis Inc. and/or Edmund McMillen.
