@@ -18,8 +18,10 @@ function DRPMod:OnUpdate()
             --local moveSpeed = player.MoveSpeed
             local shotSpeed = player.ShotSpeed
             --                   red + bone             soul + black                  rotten                                 eternal
-            local heartsAmount = (player:GetHearts() + player:GetSoulHearts() + player:GetRottenHearts() + player:GetEternalHearts()) * 0.5
-            local playerName = player:GetName()
+            local heartsAmount = (player:GetHearts() + player:GetSoulHearts()  + player:GetEternalHearts()) * 0.5 -- player:GetRottenHearts() WITHOUT REPENTACE MOD CRUSHES, IF YOU HAVE REPENTACE YOU CAN PASTE GETROTTENHEARTS like get other hearts
+            -- uncomment line bellow and comment above if you have repentance
+            --local heartsAmount = (player:GetHearts() + player:GetSoulHearts()+ player:GetRottenHearts()  + player:GetEternalHearts()) * 0.5 
+            local playerName = player:GetName() 
 
             -- 1. ZASOBY
             local currentCoins = player:GetNumCoins()

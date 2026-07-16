@@ -11,7 +11,7 @@ class dataManager:
             base = Path(__file__).resolve().parent
         # exe_path = Path(sys.executable)
         # drive = exe_path.drive
-        save_path =  (base / "data" / "discordrichpresence" / f"save{saveId}.dat").resolve()
+        save_path = f"save{saveId}.dat" #(base / "data" / "discordrichpresence" / f"save{saveId}.dat").resolve()
         #os.path.join(f"{drive}\\Program Files (x86)\\Steam\\steamapps\\common\\The Binding of Isaac Rebirth\\data\\discordrichpresence", f"save{saveId}.dat")
         if os.path.exists(save_path):
             try:

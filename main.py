@@ -1,5 +1,5 @@
-from dataManager import dataManager
-from discordManager import discordManager
+from datamanager import dataManager #lower case letters only, game for some reason lower cases everything in the game folder
+from discordmanager import discordManager #same case as above
 from pypresence import Presence
 import psutil
 import time
@@ -11,7 +11,7 @@ start_time = int(time.time())
 
 i = 30
 while i > 0:
-    running = any(p.name().lower() == "isaac-ng.exe" for p in psutil.process_iter(["name"]))
+    running = any(p.name().lower() == "isaac.x64" for p in psutil.process_iter(["name"])) #different proccess name than on widnows
     i -= 1
     print("Waiting for the game to start... ({}s)".format(i))
     time.sleep(1)
@@ -25,7 +25,7 @@ while True:
         discordManager.updatePresence(game_data)
     time.sleep(2)
 
-    running = any(p.name().lower() == "isaac-ng.exe" for p in psutil.process_iter(["name"]))
+    running = any(p.name().lower() == "isaac.x64" for p in psutil.process_iter(["name"])) #different proccess name than on widnows
     if not running:
         print("Gra została zamknięta, kończę działanie")
         break
