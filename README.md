@@ -44,11 +44,13 @@ Important:
 - Keep `%command%` exactly as shown.
 - If your game is installed on a different drive, change the drive letter (for example `C:` -> `D:`).
 
-## Requirements
+## 🐧 Linux Installation
+For Linux installation instructions, see the `linux` branch:
+https://github.com/Alxay/the-binding-of-isaac-rebirth-discord-rich-presence/tree/linux
 
+## Requirements
 - The Binding of Isaac: Rebirth
 - Discord desktop app running
-- Windows
 
 ## Asset Note
 
