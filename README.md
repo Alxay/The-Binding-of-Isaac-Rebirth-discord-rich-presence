@@ -12,21 +12,25 @@ Show your current Isaac run directly in Discord Rich Presence.
 
 ## Download
 
-[![Latest Release](https://img.shields.io/github/v/release/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence?style=for-the-badge&logo=github)](https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/releases/latest) [![Downloads](https://img.shields.io/github/downloads/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/total?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20DOWNLOADS&color=2ea44f)](https://github.com/Alxay/The-Binding-of-Isaac-Rebirth-discord-rich-presence/releases)
+Just `git clone -b linux --single-branch https://github.com/Alxay/the-binding-of-isaac-rebirth-discord-rich-presence.git` into this folder:
 
-## Installation (Windows)
-### Option 1 (Recommended) – Installer
+```
+/home/[YOUR USERNAME]/.steam/debian-installation/steamapps/common/The Binding of Isaac Rebirth/mods
+```
 
-Download and run **installer.exe** from the latest release. The installer will automatically set up the mod for you.
+Remember to change `[YOUR USERNAME]` to your actual username.
 
-### Option 2 – Manual Installation
+After downloading the repo, create a Python virtual environment and install the required dependencies:
 
-1. Download the ZIP from the release page above.
-2. Extract the ZIP to:
+```bash
+cd "/home/[YOUR USERNAME]/.steam/debian-installation/steamapps/common/The Binding of Isaac Rebirth/mods/the-binding-of-isaac-rebirth-discord-rich-presence"
 
-   `C:\Program Files (x86)\Steam\steamapps\common\The Binding of Isaac Rebirth\mods`
+python3 -m venv venv
 
-3. If your Steam library is on another drive, replace the drive letter in path (for example `C:` -> `D:`).
+source venv/bin/activate
+
+pip install -r ./requirements
+```
 
 ## Steam Launch Options (Required)
 
@@ -36,19 +40,23 @@ In Steam, open:
 
 Paste this value:
 
-`"C:\Program Files (x86)\Steam\steamapps\common\The Binding of Isaac Rebirth\mods\discordrichpresence\launcher\launcher.exe" %command%`
+```
+"$STEAM_COMPAT_INSTALL_PATH/mods/The-Binding-of-Isaac-Rebirth-discord-rich-presence/launcher.sh" && %command%
+```
 
 Important:
 
+- IF YOU HAVE REPENTANCE INSTALLED GO TO LINE 21, COMMENT IT (`--`) AND UNCOMMENT LINE 23.
 - Keep the quotes around the full path.
 - Keep `%command%` exactly as shown.
-- If your game is installed on a different drive, change the drive letter (for example `C:` -> `D:`).
+- Remember to change `[YOUR USERNAME]` to your actual username.
+- MAKE SURE YOU'VE CREATED VENV
+
 
 ## Requirements
-
+- python
 - The Binding of Isaac: Rebirth
 - Discord desktop app running
-- Windows
 
 ## Asset Note
 
@@ -62,10 +70,12 @@ This repository includes images and other game-related assets from The Binding o
 
 ## Troubleshooting
 
+Remember that you can run ./launcher.sh from the mod's directory to check for any problems.
 - No Rich Presence visible:
   - Make sure Discord is running.
   - Re-check Steam Launch Options and path spelling.
-  - Confirm you changed the drive letter if needed.
+  - Confirm you changed [YOUR USERNAME] to your username.
+  - Make sure you've created venv
 - Mod not loading:
   - Verify the extracted folder is inside the `mods` directory.
 
