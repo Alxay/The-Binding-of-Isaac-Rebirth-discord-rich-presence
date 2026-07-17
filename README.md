@@ -46,7 +46,6 @@ Paste this value:
 
 Important:
 
-- IF YOU HAVE REPENTANCE INSTALLED GO TO LINE 21, COMMENT IT (`--`) AND UNCOMMENT LINE 23.
 - Keep the quotes around the full path.
 - Keep `%command%` exactly as shown.
 - Remember to change `[YOUR USERNAME]` to your actual username.
