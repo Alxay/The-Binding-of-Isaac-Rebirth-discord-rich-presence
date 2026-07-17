@@ -158,6 +158,10 @@ Paste:
 
 - Verify the mod folder is located inside the game's `mods` directory.
 
+## Acknowledgements
+
+Special thanks to [WolicraftSF](https://github.com/WolicraftSF) for helping with the Linux implementation.
+
 ---
 
 ## Asset Note
